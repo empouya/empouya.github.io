@@ -1,6 +1,6 @@
 import Section from "@/components/sections/Section";
 import { profile } from "@/content/site";
-import { about, interests, philosophy } from "@/content/site";
+import { about } from "@/content/site";
 import { detailedSkills } from "@/content/site";
 import { education, languages } from "@/content/site";
 import { availability } from "@/content/site";

@@ -1,5 +1,4 @@
 import Section from "@/components/sections/Section";
-import { profile } from "@/content/site";
 import { contact, availability } from "@/content/site";
 import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/animations/FadeIn";

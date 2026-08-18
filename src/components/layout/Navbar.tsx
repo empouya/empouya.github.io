@@ -7,13 +7,7 @@ import Container from "@/components/ui/layout/Container";
 import MobileMenu from "@/components/ui/MobileMenu";
 import { profile } from "@/content/site/profile";
 import { DownloadIcon } from "@/components/ui/icons";
-
-const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/projects", label: "Projects" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
-];
+import { primaryNavigation, resumeHref, siteRoutes } from "@/lib/routes";
 
 export default function Navbar() {
     const pathname = usePathname();
@@ -34,7 +28,7 @@ export default function Navbar() {
         <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
             <Container as="nav" className="relative flex h-16 items-center justify-between gap-6">
                 <Link
-                    href="/"
+                    href={siteRoutes.home.href}
                     className="flex items-center gap-2 text-lg font-bold tracking-tight transition-colors hover:text-accent"
                 >
                     <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground text-sm font-bold">
@@ -44,7 +38,7 @@ export default function Navbar() {
                 </Link>
 
                 <div className="hidden items-center gap-1 md:flex">
-                    {navLinks.map((link) => {
+                    {primaryNavigation.map((link) => {
                         const active = isActive(link.href);
 
                         return (
@@ -68,7 +62,7 @@ export default function Navbar() {
 
                 <div className="flex items-center gap-3">
                     <a
-                        href="/resume/resume.pdf"
+                        href={resumeHref}
                         download
                         target="_blank"
                         rel="noreferrer"
@@ -79,7 +73,7 @@ export default function Navbar() {
                         CV
                     </a>
                     <ThemeToggle />
-                    <MobileMenu links={navLinks} />
+                    <MobileMenu links={primaryNavigation} />
                 </div>
             </Container>
         </header>

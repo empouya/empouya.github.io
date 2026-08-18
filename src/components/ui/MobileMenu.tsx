@@ -6,7 +6,10 @@ import { createPortal } from "react-dom";
 import { MenuIcon, XIcon } from "@/components/ui/icons";
 
 type MobileMenuProps = {
-    links: { href: string; label: string }[];
+    links: ReadonlyArray<{
+        readonly href: string;
+        readonly label: string;
+    }>;
 };
 
 export default function MobileMenu({ links }: MobileMenuProps) {
