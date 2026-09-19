@@ -2,10 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { siteUrl } from "@/lib/config";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import PageTransition from "@/components/animations/PageTransition";
-import { ThemeProvider } from "@/components/ui/ThemeProvider";
+import SiteShell from "@/components/layout/SiteShell";
 import { profile } from "@/content/site/profile";
 
 const inter = Inter({
@@ -101,15 +98,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        <ThemeProvider>
-          <Navbar />
-          <PageTransition>
-            <div id="main-content">
-              {children}
-            </div>
-          </PageTransition>
-          <Footer />
-        </ThemeProvider>
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );

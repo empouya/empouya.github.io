@@ -6,6 +6,18 @@ The redesign keeps the existing visual identity while making the portfolio faste
 
 This document is the content contract for the remaining redesign tasks. Layout and copy can evolve, but new sections should not be added without first deciding which page owns them and what decision they help a visitor make.
 
+## Home-first migration (September 2026)
+
+The four-region Home contract remains appropriate; its implementation now makes the distinctions between commercial work, independent projects, and professional experience explicit. Selected Work shows the logistics platform and TaskHive. Experience summarizes roles and responsibilities without repeating their technical project descriptions. Confidential work links to a discussion by email; TaskHive links directly to its source until case studies are corrected in Task 6.
+
+- `src/content/home/profile.ts` is the corrected public dataset for Home and its metadata, checked against the supplied master professional profile. `src/content/site/` and the existing project JSON remain the legacy content for unmigrated pages. This is a temporary migration boundary, not two permanent sources of truth; migrate consumers and retire obsolete data as later tasks complete.
+- `SiteShell` selects the existing shell for all non-Home routes. Home owns its navigation, footer, semantic main, and theme boundary. Its static content does not depend on animation or hydration becoming visible.
+- Studio Blue and Graphite Teal apply only inside Home. Color mode is independent of palette and respects the device by default. Legacy routes retain their existing appearance and saved mode.
+- The theme comparison route `/themes/` and its preview components are removed once the two themes are implemented. It is not a permanent public page.
+- The old Home-only hero, About/skills/experience/personality previews, featured-project wrapper, and closing CTA are retired. Their replacements live in `HomePage.tsx`; shared components still used by other routes remain unchanged.
+
+The migration matrix below records the original sources and intended destinations. Removed source paths are historical references. Design and implementation details for the theme boundary are recorded in [home-theme-decision.md](home-theme-decision.md).
+
 ## Page contracts
 
 | Page | Visitor question | Primary content | Must not become |

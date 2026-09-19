@@ -11,7 +11,7 @@ Tasks must be completed in order unless the user explicitly changes the priority
 - [x] Task 1 — Lock the information architecture and content boundaries
 - [ ] Task 2 — Simplify the shared visual system
 - [ ] Task 3 — Simplify the site shell
-- [ ] Task 4 — Rebuild the homepage around rapid credibility
+- [x] Task 4 — Rebuild the homepage around rapid credibility
 - [ ] Task 5 — Redesign project cards and remove filtering
 - [ ] Task 6 — Convert project details into engineering case studies
 - [ ] Task 7 — Simplify the About page
@@ -107,7 +107,7 @@ Review sections 17–18: smaller footer, preserved navbar, useful CV action, and
 
 ---
 
-## [ ] Task 4 — Rebuild the homepage around rapid credibility
+## [x] Task 4 — Rebuild the homepage around rapid credibility
 
 ### Goal
 
@@ -135,6 +135,16 @@ Reduce the homepage to the minimum information needed for a recruiter or client 
 ### Review references
 
 Review sections 5–8, 19–20, “The homepage I would build,” and the recruiter/client journey analysis.
+
+### Completion record
+
+Completed on 2026-09-19 under the user's explicit combined scope: Home redesign, a Home-only theme manager, corrected parallel profile data, and removal of the temporary theme gallery. The four-region architecture is retained. Home now uses Studio Blue by default, offers Graphite Teal, and saves palette and system/light/dark preferences without changing legacy routes. CSS tokens, content, shell selection, and interactive controls have separate owners; Home's content remains visible without JavaScript.
+
+The corrected Home dataset uses professional chronology from 2022, distinguishes confidential commercial logistics delivery from independent TaskHive work, and qualifies local testing evidence. A valid user-supplied CV is linked through the existing resume route; the CV itself is preserved as a separate user change. Home-only obsolete sections and the uncommitted `/themes/` preview files were removed. Shared legacy project cards, profile data, page content, and theme behavior remain for later tasks.
+
+Lint, standalone TypeScript, five theme validation/bootstrap tests, and the production static export passed. The standard Turbopack build was blocked by this environment's CSS-worker port restriction; the supported Webpack build passed. Browser checks covered 320/390/768/1440px widths, both palettes, color modes and device-mode changes, first-paint persistence, client navigation, cross-tab updates, malformed and blocked storage, keyboard/Escape, reduced motion, and no-JavaScript rendering. Legacy route text parity and light/dark isolation passed. The desktop Home measured 2,373px versus the deployed baseline's 5,467px (about 57% shorter). The new palette text/background combinations met 4.5:1 contrast.
+
+This completes Task 4 only. Home-specific portions of Tasks 2, 3, 5, and 9 were explicitly brought forward; their site-wide checkboxes remain open. See [home-theme-decision.md](home-theme-decision.md) for the three implementation options, selected approach, and manual test set.
 
 ---
 
