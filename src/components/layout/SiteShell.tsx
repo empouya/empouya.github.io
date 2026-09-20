@@ -6,11 +6,21 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import PageTransition from "@/components/animations/PageTransition";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
+import AppearanceProvider from "@/components/appearance/AppearanceProvider";
+import PortfolioNavigation from "./PortfolioNavigation";
+import PortfolioFooter from "./PortfolioFooter";
 
-// The new Home owns its shell and scoped theme. Unmigrated routes retain theirs.
+// Keep the migrated shell mounted between Home and About to preserve appearance.
 export default function SiteShell({ children }: { children: ReactNode }) {
     const pathname = usePathname();
-    if (pathname === "/") return children;
+    const route = pathname.replace(/\/$/, "") || "/";
+    if (route === "/" || route === "/about") return (
+        <AppearanceProvider>
+            <PortfolioNavigation />
+            {children}
+            <PortfolioFooter />
+        </AppearanceProvider>
+    );
     return (
         <ThemeProvider>
             <Navbar />

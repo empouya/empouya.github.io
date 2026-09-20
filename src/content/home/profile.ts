@@ -1,4 +1,4 @@
-import { resumeHref } from "@/lib/routes";
+import { professionalProfile } from "@/content/profile";
 
 /**
  * Corrected public profile for the migrated Home only.
@@ -25,23 +25,13 @@ type HomeProfile = {
     experience: readonly { role: string; organization: string; dates: string; summary: string }[];
     capabilities: readonly { label: string; value: string }[];
 };
-const email = "empouya03@gmail.com";
+const { email } = professionalProfile;
 
 export const homeProfile = {
-    name: "Eid Mohammad Ahmadi",
-    givenName: "Eid Mohammad",
-    familyName: "Ahmadi",
-    role: "Backend Engineer",
+    ...professionalProfile,
     headline: "Secure APIs. Thoughtful data models. Reliable delivery.",
     summary: "I build Python backends for real workflows, from client requirements and API design to testing, deployment, and maintenance.",
     primaryStack: ["Python", "Django", "FastAPI", "PostgreSQL"],
-    location: "Barcelona, Spain",
-    workAuthorization: "Authorized to work in Spain. No sponsorship required.",
-    availability: "Open to full-time & freelance opportunities",
-    email,
-    github: "https://github.com/empouya",
-    linkedin: "https://www.linkedin.com/in/empouya/",
-    cv: { label: "Download CV", href: resumeHref },
     selectedWork: [
         {
             id: "logistics",

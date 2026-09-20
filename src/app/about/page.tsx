@@ -1,142 +1,57 @@
-import Section from "@/components/sections/Section";
-import { profile } from "@/content/site";
-import { about } from "@/content/site";
-import { detailedSkills } from "@/content/site";
-import { education, languages } from "@/content/site";
-import { availability } from "@/content/site";
-import { contact } from "@/content/site";
-import SectionHeading from "@/components/ui/SectionHeading";
-import FadeIn from "@/components/animations/FadeIn";
 import type { Metadata } from "next";
+import { aboutProfile as about } from "@/content/about/profile";
+import { professionalProfile as profile } from "@/content/profile";
 import { DownloadIcon } from "@/components/ui/icons";
+import styles from "@/components/appearance/portfolio.module.css";
+import aboutStyles from "./about.module.css";
+
+const title = `About | ${profile.name}`;
+const description = `The background, working principles, and technical focus of ${profile.name}, a ${profile.role.toLowerCase()} in ${profile.location}.`;
 
 export const metadata: Metadata = {
-    title: "About",
-    description:
-        "Learn more about Eid Mohammad Ahmadi, a Full Stack Engineer focused on Python, React, and scalable systems.",
+    title: { absolute: title },
+    description,
+    keywords: [profile.name, profile.role, "Python", "Django", "FastAPI", "PostgreSQL", "Barcelona"],
+    alternates: { canonical: "/about/" },
+    openGraph: { title, description, url: "/about/", type: "website", images: [] },
+    twitter: { card: "summary", title, description, images: [] },
 };
 
 export default function AboutPage() {
     return (
-        <main>
-            <FadeIn>
-                <Section>
-                    <div className="max-w-4xl">
-                        <SectionHeading
-                            eyebrow="About"
-                            title="Engineering scalable applications with Python, React, and AI-focused thinking"
-                            description={profile.tagline}
-                        />
+        <main id="main-content" className={styles.container} tabIndex={-1}>
+            <section className={aboutStyles.intro} aria-labelledby="about-title">
+                <p className={styles.eyebrow}>About · {profile.role}</p>
+                <h1 id="about-title">{about.title}</h1>
+                <p className={aboutStyles.lead}>{about.introduction}</p>
+                <div className={aboutStyles.journey}>
+                    {about.journey.map(paragraph => <p key={paragraph} className={styles.body}>{paragraph}</p>)}
+                </div>
+                <a href={profile.cv.href} download className={styles.textLink}>{profile.cv.label}<DownloadIcon className="h-4 w-4" /></a>
+            </section>
 
-                        {/* About paragraphs */}
-                        <div className="mt-12 space-y-6 text-muted-foreground leading-relaxed">
-                            {about.map((paragraph, index) => (
-                                <p key={index}>{paragraph}</p>
-                            ))}
-                        </div>
-                    </div>
-                </Section>
-            </FadeIn>
+            <section className={`${styles.section} ${aboutStyles.editorial}`} aria-labelledby="principles-title">
+                <div><p className={styles.eyebrow}>How I work</p><h2 id="principles-title">From understanding<br />to ownership.</h2></div>
+                <div className={aboutStyles.principles}>
+                    {about.principles.map(principle => <div key={principle.title}><h3>{principle.title}</h3><p className={styles.body}>{principle.description}</p></div>)}
+                </div>
+            </section>
 
-            {/* Working Style */}
-            <FadeIn>
-                <Section className="border-t border-border">
-                    <div className="rounded-2xl border border-border bg-card p-8">
-                        <h2 className="text-xl font-semibold text-foreground">How I Work</h2>
-                        <div className="mt-6 flex flex-wrap gap-2">
-                            {profile.traits.map((trait) => (
-                                <span
-                                    key={trait}
-                                    className="rounded-full border border-border bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground"
-                                >
-                                    {trait}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                </Section>
-            </FadeIn>
+            <section className={styles.section} aria-labelledby="toolkit-title">
+                <div className={styles.sectionHeading}><div><p className={styles.eyebrow}>Technical focus</p><h2 id="toolkit-title">A backend foundation.<br />Room to keep learning.</h2></div></div>
+                <div className={aboutStyles.toolkit}>
+                    {about.capabilities.map(group => <div key={group.title}><p className={aboutStyles.context}>{group.context}</p><h3>{group.title}</h3><p className={aboutStyles.tools}>{group.tools}</p><p className={styles.body}>{group.description}</p></div>)}
+                </div>
+            </section>
 
-            {/* Technical Skills */}
-            <FadeIn>
-                <Section className="border-t border-border">
-                    <SectionHeading eyebrow="Skills" title="Technical Profile" />
-                    <div className="mt-8 grid gap-4 md:grid-cols-2">
-                        {detailedSkills.map((skill) => (
-                            <div
-                                key={skill.label}
-                                className="rounded-2xl border border-border bg-card p-6 transition-all hover:border-accent hover:shadow-md"
-                            >
-                                <h3 className="text-sm font-semibold uppercase tracking-[0.15em] text-accent">
-                                    {skill.label}
-                                </h3>
-                                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{skill.value}</p>
-                            </div>
-                        ))}
-                    </div>
-                </Section>
-            </FadeIn>
-
-            {/* Education & Languages */}
-            <FadeIn>
-                <Section className="border-t border-border">
-                    <div className="grid gap-6 md:grid-cols-3">
-                        <div className="rounded-2xl border border-border bg-card p-6">
-                            <h2 className="text-sm font-semibold uppercase tracking-[0.15em] text-accent">
-                                Education
-                            </h2>
-                            <p className="mt-4 text-lg font-semibold text-foreground">{education.degree}</p>
-                            <p className="mt-1 text-sm text-muted-foreground">{education.school}</p>
-                            <p className="mt-1 text-sm text-muted-foreground">{education.date}</p>
-                            <p className="mt-3 text-sm text-muted-foreground">{education.details}</p>
-                        </div>
-
-                        <div className="rounded-2xl border border-border bg-card p-6">
-                            <h2 className="text-sm font-semibold uppercase tracking-[0.15em] text-accent">
-                                Languages
-                            </h2>
-                            <ul className="mt-4 space-y-2">
-                                {languages.map((item) => (
-                                    <li key={item} className="text-foreground">{item}</li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        <div className="rounded-2xl border border-border bg-gradient-to-br from-accent/10 to-card p-6">
-                            <h2 className="text-sm font-semibold uppercase tracking-[0.15em] text-accent">
-                                Availability
-                            </h2>
-                            <p className="mt-4 text-lg font-semibold text-foreground">{availability.status}</p>
-                            <p className="mt-1 text-sm text-muted-foreground">{availability.type}</p>
-                            <p className="mt-3 text-sm text-muted-foreground">{contact.location}</p>
-                        </div>
-                    </div>
-                </Section>
-            </FadeIn>
-
-            {/* Resume CTA */}
-            <FadeIn>
-                <Section className="border-t border-border">
-                    <div className="rounded-2xl border border-accent/30 bg-accent/5 p-8 text-center">
-                        <h3 className="text-lg font-semibold text-foreground">
-                            Want the full picture?
-                        </h3>
-                        <p className="mt-2 text-sm text-muted-foreground">
-                            Download my CV for the complete overview — experience, education, and skills in one document.
-                        </p>
-                        <a
-                            href="/resume/resume.pdf"
-                            download
-                            target="_blank"
-                            rel="noreferrer"
-                            className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-xl"
-                        >
-                            <DownloadIcon className="h-4 w-4" />
-                            Download CV
-                        </a>
-                    </div>
-                </Section>
-            </FadeIn>
+            <section className={styles.section} aria-labelledby="background-title">
+                <div className={styles.sectionHeading}><div><p className={styles.eyebrow}>The essentials</p><h2 id="background-title">Background & availability.</h2></div></div>
+                <dl className={aboutStyles.background}>
+                    <div><dt>Education</dt><dd><p>{about.education.degree}</p><p>{about.education.institution}</p><p>{about.education.graduated}</p></dd></div>
+                    <div><dt>Languages</dt><dd>{about.languages.map(language => <p key={language}>{language}</p>)}</dd></div>
+                    <div><dt>{profile.location}</dt><dd><p>{profile.availability}</p><p>{profile.workAuthorization}</p></dd></div>
+                </dl>
+            </section>
         </main>
     );
 }

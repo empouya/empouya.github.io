@@ -14,7 +14,7 @@ Tasks must be completed in order unless the user explicitly changes the priority
 - [x] Task 4 — Rebuild the homepage around rapid credibility
 - [ ] Task 5 — Redesign project cards and remove filtering
 - [ ] Task 6 — Convert project details into engineering case studies
-- [ ] Task 7 — Simplify the About page
+- [x] Task 7 — Simplify the About page
 - [ ] Task 8 — Reduce Contact to a one-viewport utility page
 - [ ] Task 9 — Rewrite and normalize the content
 - [ ] Task 10 — Complete responsive, accessibility, and usability QA
@@ -203,7 +203,7 @@ Review sections 11–12: case-study structure, engineering decisions, evidence, 
 
 ---
 
-## [ ] Task 7 — Simplify the About page
+## [x] Task 7 — Simplify the About page
 
 ### Goal
 
@@ -228,6 +228,26 @@ Turn About from a collection of cards and generic traits into an editorial profe
 ### Review references
 
 Review sections 13–15: fewer boxes, fewer and more meaningful principles, compact technical groups, and unboxed metadata.
+
+### Completion record
+
+Completed on 2026-09-20 under the user's combined scope: About redesign/theme migration plus Home role hierarchy, identity wordmark, removal of decorative numbering, and footer refinements. About now has a concise journey, three principles supported by concrete responsibilities, four open capability groups, unboxed background details, and one CV link. Its metadata and content use verified backend positioning and chronology from 2022; unsupported legacy performance, scholarship, and ranking claims are removed.
+
+Home and About share one mounted appearance provider, navigation, and footer. Shared identity has one corrected source, while page-specific evidence and narrative retain separate owners. The original preference storage key is preserved. Home's role grows from an 11px eyebrow to 25–34px accent text; the name remains the identity focal point at a reduced desktop size. The full-name wordmark replaces ambiguous initials. The footer groups identity, concise positioning, text links, and copyright. Old Home-only theme/navigation/style paths are retired in favor of shared owners.
+
+Lint, standalone TypeScript, all five theme validation/bootstrap tests, and Webpack static export passed. The normal Turbopack build hit the environment's CSS-worker port restriction. Browser verification covered both palettes, light/dark/device modes, widths 320/390/768/1440, direct About loading, client navigation, correct active links, reload persistence, cross-tab updates, pre-hydration preference application, malformed/blocked storage, Escape/focus, reduced motion, no-JavaScript content, and no hydration errors. Legacy Projects, project-detail, and Contact text parity and dark-mode isolation passed. Live desktop comparison showed About at 2,395px versus 3,057px deployed (about 22% shorter); mobile comparison also used the prior live audit capture.
+
+This completes Task 7 only; the Home/About shell refinements do not complete site-wide Tasks 2, 3, or 9. The user-modified CV remains outside this task's commit.
+
+### User acceptance checks
+
+- Run `npm run lint`, `npx tsc --noEmit`, `npm run test:theme`, and `npm run build` (or the documented Webpack fallback), then serve `out/` with `python3 -m http.server 8766 --directory out`.
+- Inspect `/` and `/about/` at 1440×900, 768×1024, 390×844, and 320×844. Is the role immediately readable? Does the full-name wordmark identify you clearly? Are section numbers absent and the footer balanced?
+- Compare with the deployed routes. About should have three explained principles, four open capability groups, and unboxed background details. Does it read as a coherent professional profile with accurate claims?
+- Choose Graphite Teal + Dark, navigate Home → About → Home, and refresh About. Does the choice persist, with the correct active navigation link? Also exercise Studio Blue and Match device.
+- Tab through navigation, appearance controls, CV, and footer links; Escape should close Appearance and return focus to its summary. Verify the CV downloads and GitHub/LinkedIn/email destinations are correct.
+- Visit `/projects/`, `/projects/taskhive-backend/`, and `/contact/`. Their content, layout, routes, and legacy light/dark behavior must remain unchanged. Home must retain its four-region structure and two featured projects.
+
 
 ---
 
