@@ -1,25 +1,24 @@
 {
     "id": "project-rideflow",
     "slug": "rideflow-distributed-system",
-    "title": "RideFlow — Event-Driven Distributed Backend Simulation",
-    "description": "A backend system simulating a ride-hailing platform using event-driven architecture and asynchronous service communication, designed to model scalable distributed systems.",
+    "title": "RideFlow",
+    "description": "A ride-hailing backend simulation exploring service boundaries, authentication, and location updates.",
     "tech": [
-        "Python",
-        "Node.js",
-        "Microservices",
-        "Event-Driven Architecture",
-        "Docker",
-        "REST APIs"
+        "TypeScript",
+        "NestJS",
+        "Redis",
+        "Docker"
     ],
     "image": "/projects/rideflow/cover.jpg",
     "github": "https://github.com/empouya/rideflow",
     "live": "",
     "featured": true,
     "results": [
-        "Designed an event-driven architecture to simulate real-world distributed systems with loosely coupled services",
-        "Implemented asynchronous workflows and inter-service communication patterns to improve scalability and resilience",
-        "Modeled complex system interactions such as ride requests, matching, and state transitions across services",
-        "Explored microservices design trade-offs including service boundaries, communication overhead, and fault tolerance",
-        "Built a system focused on scalability concepts rather than simple request-response APIs"
-    ]
+        "Repository contains separate API gateway, authentication, user, driver, and location services.",
+        "Explores service boundaries and authentication event contracts.",
+        "Simulation work; no production adoption or measured performance is claimed."
+    ],
+    "kind": "Backend simulation",
+    "status": "Simulation project",
+    "proof": "Separate gateway, authentication, user, driver, and location services."
 }

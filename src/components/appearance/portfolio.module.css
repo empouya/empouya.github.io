@@ -70,6 +70,9 @@
 .portfolio :is(a, button, summary, select):focus-visible { outline: 2px solid var(--portfolio-accent); outline-offset: 5px; border-radius: 3px; }
 .portfolio ::selection { background: var(--portfolio-accent); color: var(--portfolio-bg); }
 .container, .navInner { width: 100%; max-width: 1152px; margin-inline: auto; padding-inline: 32px; }
+.pageIntro { padding-block: 64px 44px; }
+.pageTitle { margin-top: 20px; max-width: 940px; font-size: clamp(40px, 5.5vw, 64px); line-height: 1.12; font-weight: 600; letter-spacing: -0.055em; }
+.lead { max-width: 760px; margin-top: 24px; color: var(--portfolio-muted); font-size: clamp(17px, 2vw, 20px); line-height: 1.75; text-wrap: pretty; }
 .header { position: sticky; top: 0; z-index: 50; background: var(--portfolio-bg); border-bottom: 1px solid var(--portfolio-border); }
 .navInner { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 80px; }
 .brand { display: flex; flex-direction: column; font-size: 14px; font-weight: 650; line-height: 1.4; letter-spacing: -0.025em; padding-block: 8px; }
@@ -158,6 +161,8 @@
     .project { padding: 22px; }
 }
 @media (max-width: 640px) {
+    .pageIntro { padding-block: 36px 32px; }
+    .pageTitle { font-size: clamp(32px, 9vw, 48px); }
     .container, .navInner { padding-inline: 20px; }
     .navInner { flex-wrap: wrap; gap: 4px 20px; padding-block: 10px; }
     .brand { order: 0; }

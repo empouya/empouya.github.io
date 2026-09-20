@@ -1,21 +1,16 @@
 {
     "id": "project-taskhive-backend",
     "slug": "taskhive-backend",
-    "title": "TaskHive — Enterprise-Grade Project Management API",
-    "description": "A production-style enterprise backend system for team-based project and task management, built with a modular monolith architecture, real-time capabilities, async processing, and full observability stack.",
+    "title": "TaskHive",
+    "description": "A team-based task-management platform with a Django REST backend and React frontend.",
     "tech": [
-        "Python",
-        "Django",
         "Django REST Framework",
         "PostgreSQL",
         "Redis",
         "Celery",
-        "Django Channels",
-        "Prometheus",
-        "Grafana",
-        "MinIO",
+        "React",
+        "TypeScript",
         "Docker",
-        "Nginx",
         "Pytest",
         "Locust"
     ],
@@ -24,11 +19,11 @@
     "live": "",
     "featured": true,
     "results": [
-        "Modular monolith architecture with decoupled domain boundaries and a strict service business logic tier, keeping long-term technical debt minimal",
-        "Stateless JWT authentication with social login (Google/GitHub) and fine-grained Role-Based Access Control (RBAC) across multi-tenant team structures",
-        "Optimized PostgreSQL data layer with multi-column indexing, soft-deletion engine, transaction blocks, and Redis-driven cache invalidation — achieving P95 read latency under 100ms",
-        "Real-time WebSocket communication modules via Django Channels alongside Celery async background processing for task notifications and heavy workloads",
-        "Full observability stack with Prometheus metrics instrumentation and Grafana dashboards monitoring latency, throughput, and worker queue health",
-        "92%+ test coverage across 110+ unit and integration tests validated under load with Locust, achieving 0% error rate under simulated concurrent traffic"
-    ]
+        "Team-scoped roles and permissions in a Django REST backend with a React/TypeScript frontend.",
+        "More than 100 backend tests and more than 90% backend test coverage.",
+        "Dockerized local system with controlled Locust smoke tests; these are not production traffic measurements."
+    ],
+    "kind": "Independent project",
+    "status": "Runs locally · Public demo in progress",
+    "proof": "100+ backend tests · 90%+ backend test coverage."
 }

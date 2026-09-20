@@ -27,7 +27,7 @@ export default function PortfolioNavigation() {
             <div className={styles.navInner}>
                 <Link href="/" className={styles.brand} aria-label={`${profile.name} — Home`}>{profile.givenName}<span>{profile.familyName}</span></Link>
                 <nav aria-label="Main navigation" className={styles.navigation}>
-                    {primaryNavigation.map(link => <Link key={link.href} href={link.href} aria-current={link.href === pathname ? "page" : undefined}>{link.label}</Link>)}
+                    {primaryNavigation.map(link => <Link key={link.href} href={link.href} aria-current={(link.href === pathname || (link.href !== "/" && pathname.startsWith(`${link.href}/`))) ? "page" : undefined}>{link.label}</Link>)}
                 </nav>
                 <details ref={appearanceRef} className={styles.appearance} onKeyDown={event => {
                     if (event.key === "Escape") {
@@ -47,7 +47,7 @@ export default function PortfolioNavigation() {
                         <select id="home-mode" value={preference.mode} onChange={event => setPreference({ ...preference, mode: event.target.value as ColorMode })}>
                             {colorModes.map(mode => <option key={mode} value={mode}>{mode === "system" ? "Match device" : mode === "light" ? "Light" : "Dark"}</option>)}
                         </select>
-                        <p>Saved for Home and About.</p>
+                        <p>Saved for your next visit.</p>
                     </div>
                 </details>
             </div>

@@ -64,6 +64,9 @@ export type Profile = {
 };
 
 export type Project = {
+    kind: string;
+    status: string;
+    proof: string;
     id: string;
     slug: string;
     title: string;

@@ -6,7 +6,7 @@ import project4 from "./data/project4.json";
 
 export type { Project };
 
-export const projects: Project[] = [project1, project2, project3, project4];
+export const projects: Project[] = [project2, project1, project3, project4];
 
 export function getFeaturedProjects(): Project[] {
     return projects.filter((p) => p.featured);

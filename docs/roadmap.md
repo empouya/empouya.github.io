@@ -12,7 +12,7 @@ Tasks must be completed in order unless the user explicitly changes the priority
 - [ ] Task 2 — Simplify the shared visual system
 - [ ] Task 3 — Simplify the site shell
 - [x] Task 4 — Rebuild the homepage around rapid credibility
-- [ ] Task 5 — Redesign project cards and remove filtering
+- [x] Task 5 — Redesign project cards and remove filtering
 - [ ] Task 6 — Convert project details into engineering case studies
 - [x] Task 7 — Simplify the About page
 - [ ] Task 8 — Reduce Contact to a one-viewport utility page
@@ -148,7 +148,7 @@ This completes Task 4 only. Home-specific portions of Tasks 2, 3, 5, and 9 were 
 
 ---
 
-## [ ] Task 5 — Redesign project cards and remove filtering
+## [x] Task 5 — Redesign project cards and remove filtering
 
 ### Goal
 
@@ -173,6 +173,12 @@ Make the four-project library faster to scan and remove controls and visual area
 ### Review references
 
 Review sections 8–10: featured work as the centerpiece, removal of unnecessary filters, text-first backend project presentation, and progressive disclosure.
+
+### Completion record
+
+Completed 2026-09-20 as the first cycle of the requested Projects/case-study/Contact migration. The library is server-rendered with text-first cards, four prioritized technologies, one proof point, explicit project type/status, and always-visible case-study links. Filters, client filtering state, and placeholder images are removed. Existing slugs remain intact. TaskHive claims follow the master profile; source inspection corrected RideFlow to TypeScript/NestJS and Tweeter to TCP sockets. Home and About presentation remains intact.
+
+Lint, TypeScript, theme tests, and Webpack static export passed. Turbopack remains blocked by the environment’s worker-port restriction. Browser checks passed for both palettes and light/dark modes at 320/390/768/1440px, active navigation, and content without JavaScript. Compared with deployed Projects at desktop/mobile sizes. Task 6 will expand this library with the profile-backed logistics and Aetheris case studies.
 
 ---
 

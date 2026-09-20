@@ -1,0 +1,6 @@
+.library { padding-bottom: 72px; }
+.cardTitle { margin-top: 25px; font-size: 25px; line-height: 1.35; font-weight: 600; letter-spacing: -0.035em; }
+@media (max-width: 640px) {
+    .library { padding-bottom: 42px; }
+    .cardTitle { font-size: 23px; }
+}

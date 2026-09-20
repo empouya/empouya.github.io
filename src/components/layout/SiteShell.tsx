@@ -14,7 +14,7 @@ import PortfolioFooter from "./PortfolioFooter";
 export default function SiteShell({ children }: { children: ReactNode }) {
     const pathname = usePathname();
     const route = pathname.replace(/\/$/, "") || "/";
-    if (route === "/" || route === "/about") return (
+    if (route === "/" || route === "/about" || route === "/projects") return (
         <AppearanceProvider>
             <PortfolioNavigation />
             {children}

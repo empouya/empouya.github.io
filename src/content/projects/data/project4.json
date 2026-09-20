@@ -1,12 +1,12 @@
 {
     "id": "project-tweeter",
     "slug": "tweeter-realtime-app",
-    "title": "Tweeter — Real-Time Distributed Messaging Application",
-    "description": "A distributed desktop application inspired by Twitter, implementing real-time communication and client-server architecture using Java.",
+    "title": "Tweeter",
+    "description": "A Java desktop messaging application exploring client-server communication and live interactions.",
     "tech": [
         "Java",
-        "WebSockets",
-        "Client-Server Architecture",
+        "JavaFX",
+        "TCP sockets",
         "MVC"
     ],
     "image": "/projects/tweeter/cover.jpg",
@@ -14,9 +14,11 @@
     "live": "",
     "featured": false,
     "results": [
-        "Implemented real-time messaging using WebSockets for live user interaction",
-        "Designed client-server communication with clear separation of concerns (MVC architecture)",
-        "Handled concurrent user interactions and message propagation across the system",
-        "Explored distributed system fundamentals in a stateful communication environment"
-    ]
+        "JavaFX client communicates with a Java server over TCP sockets.",
+        "Connection handling is separated from application services and GUI controllers.",
+        "A term project exploring concurrent client handling; no production usage is claimed."
+    ],
+    "kind": "Academic desktop project",
+    "status": "Term project \u00b7 Source available",
+    "proof": "Client-server communication with MVC separation."
 }

@@ -1,13 +1,12 @@
 {
     "id": "project-xv6",
     "slug": "xv6-riscv-kernel",
-    "title": "XV6-RISC-V — Operating System Kernel Extensions",
-    "description": "Extended an educational operating system kernel (XV6) to deepen understanding of low-level systems, process management, and operating system design.",
+    "title": "xv6 kernel extensions",
+    "description": "Extensions to the educational xv6 RISC-V kernel, exploring processes, memory, and system calls.",
     "tech": [
         "C",
-        "Operating Systems",
         "RISC-V",
-        "Low-level Programming"
+        "Operating systems"
     ],
     "image": "/projects/xv6/cover.jpg",
     "github": "https://github.com/empahmadi/xv6-riscv",
@@ -18,5 +17,8 @@
         "Modified and extended OS components to explore core operating system behaviors",
         "Gained practical experience with low-level programming and hardware-software interaction",
         "Strengthened understanding of concurrency, process lifecycle, and system resource management"
-    ]
+    ],
+    "kind": "Educational systems project",
+    "status": "Educational kernel work",
+    "proof": "Hands-on work with process lifecycle and kernel components."
 }
