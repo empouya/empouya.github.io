@@ -6,7 +6,7 @@ import styles from "@/components/appearance/portfolio.module.css";
 import projectStyles from "@/components/projects/projects.module.css";
 
 const title = `Projects | ${profile.name}`;
-const description = "Backend applications and systems experiments, with context, implementation details, and supporting evidence.";
+const description = "Commercial delivery, independent backend platforms, and systems experiments—with context and evidence for each.";
 export const metadata: Metadata = {
     title: { absolute: title }, description,
     keywords: [profile.name, profile.role, "Python", "Django", "Backend projects"],

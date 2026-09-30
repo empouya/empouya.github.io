@@ -13,7 +13,7 @@ Tasks must be completed in order unless the user explicitly changes the priority
 - [ ] Task 3 — Simplify the site shell
 - [x] Task 4 — Rebuild the homepage around rapid credibility
 - [x] Task 5 — Redesign project cards and remove filtering
-- [ ] Task 6 — Convert project details into engineering case studies
+- [x] Task 6 — Convert project details into engineering case studies
 - [x] Task 7 — Simplify the About page
 - [ ] Task 8 — Reduce Contact to a one-viewport utility page
 - [ ] Task 9 — Rewrite and normalize the content
@@ -182,7 +182,7 @@ Lint, TypeScript, theme tests, and Webpack static export passed. Turbopack remai
 
 ---
 
-## [ ] Task 6 — Convert project details into engineering case studies
+## [x] Task 6 — Convert project details into engineering case studies
 
 ### Goal
 
@@ -206,6 +206,14 @@ Present projects as credible engineering evidence rather than expanded résumé 
 ### Review references
 
 Review sections 11–12: case-study structure, engineering decisions, evidence, calmer result lists, and reduced pill/card usage.
+
+### Completion record
+
+Completed 2026-09-30 after resuming the interrupted cycle. All six case studies now show role, type, status, context, contribution, architecture, decisions, evidence, limitations, and source availability. Logistics and Aetheris were added from the supplied master profile; all four existing slugs remain intact. Home’s two selected summaries now consume the same dataset and link to the corresponding case studies. Numeric filenames were replaced by descriptive project filenames. `project-evidence.md` records source checks and factual corrections. Canonicals and sitemap URLs match static routes; empty social-image references are removed from project metadata.
+
+Lint, standalone TypeScript, eight theme/content regression tests, and Webpack export passed. Browser checks covered all six cases in 96 combinations of palette, mode, and 320/390/768/1440px width, plus section-anchor clearance, active Projects navigation, Home links, refresh persistence, unique main/H1, and no-JavaScript content. No runtime or hydration errors were observed. Deployed TaskHive was captured for desktop/mobile comparison. These checks validate the portfolio, not the project repositories’ runtime behavior.
+
+Manual acceptance: open every `/projects/<slug>/` link from the library at 1440×900 and 390×844; can you identify the role and project status immediately, inspect architecture/evidence, and follow source links? Choose Graphite Teal/Dark, navigate Home → case study → Projects, then refresh; appearance must persist. Old URLs and Home’s four-region layout must remain intact.
 
 ---
 

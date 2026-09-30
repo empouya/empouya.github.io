@@ -1,0 +1,60 @@
+{
+    "id": "project-logistics",
+    "slug": "international-logistics-platform",
+    "title": "International logistics platform",
+    "description": "A Django backend replacing fragmented spreadsheets with shipment, branch, and multi-currency financial workflows.",
+    "kind": "Commercial production",
+    "status": "Client delivery · Jun 2023–May 2025",
+    "proof": "Supported operations across 6 countries and 5 languages.",
+    "tech": [
+        "Python",
+        "Django",
+        "PostgreSQL",
+        "Docker",
+        "Linux",
+        "Nginx",
+        "Pytest"
+    ],
+    "featured": true,
+    "role": "Technical Lead / Backend Engineer · Freelance",
+    "context": "A logistics client relied on fragmented Excel and Word workflows for shipments, branch operations, and financial records. The platform centralized these processes for approximately 30 employees, with restricted customer and transport-personnel access.",
+    "contribution": "Led technical delivery for a seven-developer freelance team. Owned requirements discussions, backend architecture and implementation, code review, deployment configuration, and maintenance, working with two backend teammates and the frontend lead.",
+    "architecture": {
+        "summary": "The React frontend, Django backend, PostgreSQL database, and supporting services ran on one Alibaba Cloud ECS instance. Delivery included Linux, Docker, Nginx, HTTPS, and backups.",
+        "components": [
+            {
+                "name": "Operations interface",
+                "detail": "Shipment, branch, customer, and financial workflows."
+            },
+            {
+                "name": "Django backend",
+                "detail": "Role-based access and guarded business operations."
+            },
+            {
+                "name": "PostgreSQL & ECS",
+                "detail": "Persistent records and a single-instance deployment."
+            }
+        ]
+    },
+    "decisions": [
+        {
+            "title": "Confirm transport updates at the branch",
+            "description": "Transport personnel could submit status updates, but the originating branch had to confirm them. This made the operational approval rule part of backend behavior."
+        },
+        {
+            "title": "Preserve currency context",
+            "description": "Financial records retained the original amount, received currency, and exchange rate against Chinese yuan. Those details preserve the context needed to interpret multi-currency transactions."
+        },
+        {
+            "title": "Keep delivery and recovery explicit",
+            "description": "The deployment used a single ECS instance, with daily and on-demand backups. Image building and staging preparation were automated; production replacement remained manual, with the associated operational responsibility."
+        }
+    ],
+    "results": [
+        "Implemented four role-based access models for administrators, branch staff, customers, and transport personnel.",
+        "Configured deployment and backups, and handled subsequent maintenance and improvements."
+    ],
+    "limitations": "The client and source code are confidential. Technical lead describes responsibility within a small freelance team. This was a single-instance deployment, not a claim of high availability or large-scale traffic.",
+    "resourceNote": "Public source and a live demo are unavailable for this confidential client system. I can discuss the architecture and my contribution without disclosing client data.",
+    "references": []
+}

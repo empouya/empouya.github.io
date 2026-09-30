@@ -1,3 +1,4 @@
+import { getFeaturedProjects } from "@/content/projects";
 import { professionalProfile } from "@/content/profile";
 
 /**
@@ -9,7 +10,7 @@ import { professionalProfile } from "@/content/profile";
 type SelectedWork = {
     id: string;
     title: string;
-    kind: "Commercial production" | "Independent project";
+    kind: string;
     summary: string;
     stack: readonly string[];
     evidence: string;
@@ -25,35 +26,22 @@ type HomeProfile = {
     experience: readonly { role: string; organization: string; dates: string; summary: string }[];
     capabilities: readonly { label: string; value: string }[];
 };
-const { email } = professionalProfile;
 
 export const homeProfile = {
     ...professionalProfile,
     headline: "Secure APIs. Thoughtful data models. Reliable delivery.",
     summary: "I build Python backends for real workflows, from client requirements and API design to testing, deployment, and maintenance.",
     primaryStack: ["Python", "Django", "FastAPI", "PostgreSQL"],
-    selectedWork: [
-        {
-            id: "logistics",
-            title: "International logistics platform",
-            kind: "Commercial production",
-            summary: "Replaced fragmented spreadsheets with a Django backend for shipment tracking, branch operations, and multi-currency financial records.",
-            stack: ["Python", "Django", "PostgreSQL", "Docker"],
-            evidence: "Supported operations across 6 countries and 5 languages.",
-            context: "Confidential freelance client · Deployed on Alibaba Cloud ECS",
-            action: { label: "Discuss this work", href: `mailto:${email}?subject=Logistics%20platform%20discussion` },
-        },
-        {
-            id: "taskhive",
-            title: "TaskHive",
-            kind: "Independent project",
-            summary: "A team-based project and task-management platform with a Django REST API, team-scoped permissions, and a React frontend.",
-            stack: ["Django REST Framework", "PostgreSQL", "Redis", "Celery"],
-            evidence: "100+ backend tests · 90%+ backend test coverage.",
-            context: "Runs locally · Performance checks are local Locust smoke tests",
-            action: { label: "Explore the source", href: "https://github.com/empouya/task-hive" },
-        },
-    ],
+    selectedWork: getFeaturedProjects().map(project => ({
+        id: project.id,
+        title: project.title,
+        kind: project.kind,
+        summary: project.description,
+        stack: project.tech.slice(0, 4),
+        evidence: project.proof,
+        context: project.status,
+        action: { label: "Read case study", href: `/projects/${project.slug}/` },
+    })),
     experience: [
         {
             role: "Independent Software Engineer",

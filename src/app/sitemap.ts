@@ -9,14 +9,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const lastModified = new Date();
 
     const staticPages = staticSitemapRoutes.map((route) => ({
-        url: route.href === "/" ? siteUrl : `${siteUrl}${route.href}`,
+        url: route.href === "/" ? siteUrl : `${siteUrl}${route.href}/`,
         lastModified,
         changeFrequency: route.changeFrequency,
         priority: route.priority,
     }));
 
     const projectPages = projects.map((project) => ({
-        url: `${siteUrl}/projects/${project.slug}`,
+        url: `${siteUrl}/projects/${project.slug}/`,
         lastModified,
         changeFrequency: "monthly" as const,
         priority: 0.6,

@@ -1,0 +1,71 @@
+{
+    "id": "project-aetheris",
+    "slug": "aetheris",
+    "title": "Aetheris",
+    "description": "A multi-tenant FastAPI backend for document ingestion, semantic search, and retrieval-augmented generation.",
+    "kind": "Independent project",
+    "status": "Runs locally · Public demo in progress",
+    "proof": "Organization-scoped ingestion and semantic retrieval.",
+    "tech": [
+        "FastAPI",
+        "PostgreSQL",
+        "Qdrant",
+        "Celery",
+        "Redis",
+        "MinIO",
+        "Docker",
+        "OpenTelemetry"
+    ],
+    "github": "https://github.com/empouya/aetheris",
+    "featured": false,
+    "role": "Backend development · Independent project",
+    "context": "Document search combines several concerns: receiving files, processing their contents, finding relevant passages, and keeping each organization’s data isolated. Aetheris explores these concerns as a backend platform.",
+    "contribution": "Built a multi-tenant ingestion and semantic-search backend with organization-scoped access, isolated services and tests, Docker infrastructure, and observability.",
+    "architecture": {
+        "summary": "A modular FastAPI application coordinates ingestion and retrieval. Background workers extract, chunk, and embed documents; PostgreSQL is the authoritative store, Qdrant supports vector retrieval, and MinIO stores objects.",
+        "components": [
+            {
+                "name": "FastAPI",
+                "detail": "Tenant-scoped ingestion and search interfaces."
+            },
+            {
+                "name": "Workers",
+                "detail": "Celery/Redis coordinate document processing."
+            },
+            {
+                "name": "Storage & retrieval",
+                "detail": "PostgreSQL, MinIO, and Qdrant have distinct roles."
+            }
+        ]
+    },
+    "decisions": [
+        {
+            "title": "Carry organization scope through the system",
+            "description": "Tenant isolation is a constraint on ingestion and retrieval, not just a UI filter. Services and their tests are organized around scoped access."
+        },
+        {
+            "title": "Process documents asynchronously",
+            "description": "Extraction, chunking, embedding, and indexing run as background work. This separates long-running processing from the upload request and makes processing state part of the API contract."
+        },
+        {
+            "title": "Separate authoritative data from search indexes",
+            "description": "PostgreSQL owns application records while Qdrant supports semantic retrieval and MinIO holds objects. The separation clarifies each store’s responsibility, while introducing consistency and operational work across services."
+        }
+    ],
+    "results": [
+        "The public repository documents a local Docker environment and API contracts.",
+        "Its documented check commands cover formatting, linting, types, and tests; no current pass count or production benchmark is asserted here."
+    ],
+    "limitations": "Operational locally, with a public online demo still in progress. No production customers, commercial adoption, or production-scale traffic is claimed.",
+    "resourceNote": "The repository includes architecture, API, security, and local setup documentation. A hosted demonstration is not yet available.",
+    "references": [
+        {
+            "label": "Architecture documentation",
+            "href": "https://github.com/empouya/aetheris/blob/main/docs/ARCHITECTURE.md"
+        },
+        {
+            "label": "API contract",
+            "href": "https://github.com/empouya/aetheris/blob/main/docs/API_SPECIFICATION.md"
+        }
+    ]
+}

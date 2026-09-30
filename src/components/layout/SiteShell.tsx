@@ -10,11 +10,11 @@ import AppearanceProvider from "@/components/appearance/AppearanceProvider";
 import PortfolioNavigation from "./PortfolioNavigation";
 import PortfolioFooter from "./PortfolioFooter";
 
-// Keep the migrated shell mounted between Home and About to preserve appearance.
+// Migrated routes share one mounted provider; Contact keeps its shell until Task 8.
 export default function SiteShell({ children }: { children: ReactNode }) {
     const pathname = usePathname();
     const route = pathname.replace(/\/$/, "") || "/";
-    if (route === "/" || route === "/about" || route === "/projects") return (
+    if (route === "/" || route === "/about" || route === "/projects" || route.startsWith("/projects/")) return (
         <AppearanceProvider>
             <PortfolioNavigation />
             {children}

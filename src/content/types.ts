@@ -64,18 +64,24 @@ export type Profile = {
 };
 
 export type Project = {
-    kind: string;
-    status: string;
-    proof: string;
     id: string;
     slug: string;
     title: string;
     description: string;
+    kind: string;
+    status: string;
+    role: string;
+    proof: string;
     tech: string[];
-    image: string;
-    github: string;
-    live: string;
     featured: boolean;
+    context: string;
+    contribution: string;
+    architecture: { summary: string; components: { name: string; detail: string }[] };
+    decisions: { title: string; description: string }[];
     results: string[];
-    ogImage?: string;
+    limitations: string;
+    resourceNote: string;
+    github?: string;
+    live?: string;
+    references: { label: string; href: string }[];
 };

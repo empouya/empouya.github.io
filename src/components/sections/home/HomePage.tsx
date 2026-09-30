@@ -48,7 +48,7 @@ export default function HomePage() {
                             <p className={styles.body}>{work.summary}</p>
                             <p className={styles.stack}>{work.stack.join(" · ")}</p>
                             <div className={styles.evidence}><p>{work.evidence}</p><p>{work.context}</p></div>
-                            <a href={work.action.href} className={styles.textLink} {...(work.action.href.startsWith("https:") ? { target: "_blank", rel: "noreferrer" } : {})}>{work.action.label}<ArrowRightIcon className="h-4 w-4" /></a>
+                            <Link href={work.action.href} className={styles.textLink} aria-label={`Read case study: ${work.title}`}>{work.action.label}<ArrowRightIcon className="h-4 w-4" /></Link>
                         </article>
                     ))}
                 </div>

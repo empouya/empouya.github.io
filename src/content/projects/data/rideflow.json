@@ -1,0 +1,67 @@
+{
+    "id": "project-rideflow",
+    "slug": "rideflow-distributed-system",
+    "title": "RideFlow",
+    "description": "A ride-hailing backend simulation exploring service boundaries, authentication, and location updates.",
+    "tech": [
+        "TypeScript",
+        "NestJS",
+        "Redis",
+        "Docker"
+    ],
+    "github": "https://github.com/empouya/rideflow",
+    "featured": false,
+    "results": [
+        "The repository contains gateway and service integration tests alongside application code.",
+        "Authentication event contracts and service boundaries are available for inspection."
+    ],
+    "kind": "Backend simulation",
+    "status": "Simulation project",
+    "proof": "Separate gateway, authentication, user, driver, and location services.",
+    "role": "Backend development · Independent project",
+    "context": "RideFlow explores how a ride-hailing backend can be split into services. The current repository contains gateway, authentication, user, driver, and location services; it is a simulation, not a commercial ride-hailing operation.",
+    "contribution": "Implemented service boundaries, authentication flows, gateway routing, and location-related backend work in a TypeScript/NestJS workspace.",
+    "architecture": {
+        "summary": "The gateway fronts separate backend services. Service code separates application use cases, domain interfaces, and infrastructure integrations.",
+        "components": [
+            {
+                "name": "API gateway",
+                "detail": "Routing, JWT middleware, and request throttling."
+            },
+            {
+                "name": "Domain services",
+                "detail": "Authentication, user, driver, and location responsibilities."
+            },
+            {
+                "name": "Infrastructure",
+                "detail": "Redis, Docker, and event-publisher implementations."
+            }
+        ]
+    },
+    "decisions": [
+        {
+            "title": "Separate entry points from domain work",
+            "description": "The gateway handles shared request concerns while service modules own their application behavior. This makes boundaries explicit, at the cost of additional routing and operational coordination."
+        },
+        {
+            "title": "Isolate event publication",
+            "description": "An event-publisher interface separates authentication use cases from delivery mechanisms. The repository includes in-memory and Kafka publishers; their presence alone is not evidence of reliable end-to-end event delivery."
+        },
+        {
+            "title": "Make contracts inspectable",
+            "description": "Authentication event documentation specifies payloads and intended consumers. Gateway and service tests provide concrete places to inspect behavior as the simulation develops."
+        }
+    ],
+    "limitations": "No production deployment, user adoption, throughput, or fault-tolerance benchmark is claimed. The wider ride-matching and payment vision should not be read as a verified completed system.",
+    "resourceNote": "Source code is public. No hosted demonstration is listed.",
+    "references": [
+        {
+            "label": "Gateway implementation",
+            "href": "https://github.com/empouya/rideflow/tree/main/apps/api-gateway"
+        },
+        {
+            "label": "Authentication event contract",
+            "href": "https://github.com/empouya/rideflow/blob/main/docs/events/auth-events.md"
+        }
+    ]
+}

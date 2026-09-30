@@ -1,0 +1,67 @@
+{
+    "id": "project-tweeter",
+    "slug": "tweeter-realtime-app",
+    "title": "Tweeter",
+    "description": "A Java desktop messaging application exploring client-server communication and live interactions.",
+    "tech": [
+        "Java",
+        "JavaFX",
+        "TCP sockets",
+        "MVC"
+    ],
+    "github": "https://github.com/empahmadi/Tweeter-Project",
+    "featured": false,
+    "results": [
+        "The client connection implementation uses java.net.Socket with data streams.",
+        "The server uses ServerSocket and an executor to dispatch client handlers."
+    ],
+    "kind": "Academic desktop project",
+    "status": "Term project · Source available",
+    "proof": "Client-server communication with MVC separation.",
+    "role": "Client & server development · Academic project",
+    "context": "Tweeter is a Java term project exploring a social messaging application with a desktop interface. It combines GUI interactions, request/response communication, and server-side user and timeline services.",
+    "contribution": "Implemented a JavaFX client and Java server, including connection handling, application services, and GUI controllers.",
+    "architecture": {
+        "summary": "The JavaFX client exchanges messages with a Java server over TCP sockets. Server-side handlers delegate to authentication, tweeting, and timeline services.",
+        "components": [
+            {
+                "name": "Desktop client",
+                "detail": "JavaFX views, controllers, and client services."
+            },
+            {
+                "name": "TCP connection",
+                "detail": "Socket streams carry request/response messages."
+            },
+            {
+                "name": "Java server",
+                "detail": "Client handlers and application services."
+            }
+        ]
+    },
+    "decisions": [
+        {
+            "title": "Keep networking separate from the GUI",
+            "description": "A connection service reads and writes socket messages while GUI controllers handle presentation. This establishes a boundary between transport behavior and desktop interaction."
+        },
+        {
+            "title": "Delegate requests to application services",
+            "description": "Client handlers receive requests and coordinate authentication, tweeting, and timeline services. Responsibilities remain visible outside the socket loop."
+        },
+        {
+            "title": "Explore concurrent connections",
+            "description": "The server dispatches connection handlers through an executor. This demonstrates concurrent handling in coursework; it is not evidence of production scalability or hardened resource limits."
+        }
+    ],
+    "limitations": "Academic desktop software with no hosted demo or production usage claim. Local setup may require adapting configuration paths. Its networking uses TCP sockets, not the WebSockets previously listed in the portfolio.",
+    "resourceNote": "The public source contains the client, server, and JavaFX resources.",
+    "references": [
+        {
+            "label": "Client connection implementation",
+            "href": "https://github.com/empahmadi/Tweeter-Project/blob/main/java/org/ce/ap/client/impl/ConnectionServiceImpl.java"
+        },
+        {
+            "label": "Server connection handling",
+            "href": "https://github.com/empahmadi/Tweeter-Project/blob/main/java/org/ce/ap/server/Main.java"
+        }
+    ]
+}

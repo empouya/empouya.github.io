@@ -1,0 +1,72 @@
+{
+    "id": "project-taskhive-backend",
+    "slug": "taskhive-backend",
+    "title": "TaskHive",
+    "description": "A team-based task-management platform with a Django REST backend and React frontend.",
+    "tech": [
+        "Django REST Framework",
+        "PostgreSQL",
+        "Redis",
+        "Celery",
+        "React",
+        "TypeScript",
+        "Docker",
+        "Pytest",
+        "Locust"
+    ],
+    "github": "https://github.com/empouya/task-hive",
+    "featured": true,
+    "results": [
+        "Backend unit and integration tests accompany the implementation.",
+        "The repository’s Locust smoke profile targets the locally running Docker stack."
+    ],
+    "kind": "Independent project",
+    "status": "Runs locally · Public demo in progress",
+    "proof": "100+ backend tests · 90%+ backend test coverage.",
+    "role": "Backend & frontend development · Independent project",
+    "context": "Team-based task management needs more than task CRUD: access must stay scoped to the team, permissions need consistent enforcement, and background work should not dominate request handling.",
+    "contribution": "Built the Django REST backend and React/TypeScript frontend, including team-scoped permissions, backend tests, and a Docker-based local environment.",
+    "architecture": {
+        "summary": "A modular Django backend groups users, teams, projects, and tasks into domains. PostgreSQL stores application data; Redis and Celery support background processing.",
+        "components": [
+            {
+                "name": "Product interface",
+                "detail": "React/TypeScript frontend and Django REST API."
+            },
+            {
+                "name": "Domain & data",
+                "detail": "Domain modules, explicit services, and PostgreSQL."
+            },
+            {
+                "name": "Background work",
+                "detail": "Redis and Celery workers alongside the API."
+            }
+        ]
+    },
+    "decisions": [
+        {
+            "title": "Keep domain rules explicit",
+            "description": "The backend uses domain modules and service functions to separate business behavior from request serialization. This keeps the application in one codebase while giving its responsibilities clear boundaries."
+        },
+        {
+            "title": "Scope access to the team",
+            "description": "Roles and permissions apply within a team context. The API must verify access to the relevant team rather than treating authentication alone as authorization."
+        },
+        {
+            "title": "Test behavior before claiming performance",
+            "description": "Unit and integration tests support the permission and domain behavior. Locust smoke tests exercise the local system, but do not establish production capacity or a service-level guarantee."
+        }
+    ],
+    "limitations": "Operational locally; a public online demo is still in progress. Test coverage describes backend tests. Local latency and error-rate observations are not presented as production benchmarks.",
+    "resourceNote": "Explore the backend repository and its local setup instructions. The frontend is part of the project described in the professional profile.",
+    "references": [
+        {
+            "label": "Backend structure and local setup",
+            "href": "https://github.com/empouya/task-hive#readme"
+        },
+        {
+            "label": "Local performance test assets",
+            "href": "https://github.com/empouya/task-hive/tree/main/performance"
+        }
+    ]
+}

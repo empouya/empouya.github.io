@@ -1,0 +1,66 @@
+{
+    "id": "project-xv6",
+    "slug": "xv6-riscv-kernel",
+    "title": "xv6 kernel extensions",
+    "description": "Extensions to the educational xv6 RISC-V kernel, exploring processes, memory, and system calls.",
+    "tech": [
+        "C",
+        "RISC-V",
+        "Operating systems"
+    ],
+    "github": "https://github.com/empahmadi/xv6-riscv",
+    "featured": false,
+    "results": [
+        "Additional system-call definitions include scheduler switching, process timing, and waiting for a process ID.",
+        "The process structure includes running, ready, sleeping, and termination timing fields."
+    ],
+    "kind": "Educational systems project",
+    "status": "Educational kernel work",
+    "proof": "Added scheduler-switching and process-timing system calls.",
+    "role": "Kernel extension work · Educational project",
+    "context": "This project extends MIT’s educational xv6 operating system. Working inside a small RISC-V kernel makes process state, scheduling, and the boundary between user programs and the kernel directly inspectable.",
+    "contribution": "Extended kernel interfaces for scheduler switching and process timing. The public source includes additional system-call definitions and per-process timing fields.",
+    "architecture": {
+        "summary": "User programs reach kernel functionality through system calls. Process state and accounting live in the kernel’s process structures.",
+        "components": [
+            {
+                "name": "User programs",
+                "detail": "Invoke the exposed system-call interface."
+            },
+            {
+                "name": "System calls",
+                "detail": "Scheduler switching and process-timing interfaces."
+            },
+            {
+                "name": "Kernel state",
+                "detail": "Process lifecycle and timing fields."
+            }
+        ]
+    },
+    "decisions": [
+        {
+            "title": "Build on a teaching kernel",
+            "description": "The work extends the existing xv6 codebase. The original operating system belongs to its upstream authors; the contribution is the extension work, not authorship of the kernel."
+        },
+        {
+            "title": "Expose behavior through system calls",
+            "description": "Explicit interfaces make scheduler selection and process timing accessible from user space while keeping the underlying process structures inside the kernel."
+        },
+        {
+            "title": "Track process states separately",
+            "description": "The process structure contains running, ready, sleeping, and termination timing fields. These make state accounting inspectable without claiming a measured scheduler-speed improvement."
+        }
+    ],
+    "limitations": "Educational kernel work, not a production operating system. This case study does not claim benchmark improvements or a complete verification of kernel correctness.",
+    "resourceNote": "The repository includes xv6 build instructions requiring a RISC-V toolchain and QEMU. There is no browser-based demo.",
+    "references": [
+        {
+            "label": "Extended system-call interface",
+            "href": "https://github.com/empahmadi/xv6-riscv/blob/riscv/kernel/syscall.h"
+        },
+        {
+            "label": "Process state and timing fields",
+            "href": "https://github.com/empahmadi/xv6-riscv/blob/riscv/kernel/proc.h"
+        }
+    ]
+}
