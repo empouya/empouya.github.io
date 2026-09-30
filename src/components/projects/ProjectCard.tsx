@@ -4,11 +4,14 @@ import { ArrowRightIcon } from "@/components/ui/icons";
 import styles from "@/components/appearance/portfolio.module.css";
 import projectStyles from "./projects.module.css";
 
-export default function ProjectCard({ project }: { project: Project }) {
+type ProjectCardProps = { project: Project; headingLevel?: 2 | 3 };
+
+export default function ProjectCard({ project, headingLevel = 2 }: ProjectCardProps) {
+    const Heading = headingLevel === 3 ? "h3" : "h2";
     return (
         <article className={styles.project} aria-labelledby={`${project.slug}-title`}>
             <p className={styles.projectTop}>{project.kind}</p>
-            <h2 id={`${project.slug}-title`} className={projectStyles.cardTitle}>{project.title}</h2>
+            <Heading id={`${project.slug}-title`} className={headingLevel === 2 ? projectStyles.cardTitle : undefined}>{project.title}</Heading>
             <p className={styles.body}>{project.description}</p>
             <p className={styles.stack}>{project.tech.slice(0, 4).join(" · ")}</p>
             <div className={styles.evidence}><p>{project.proof}</p><p>{project.status}</p></div>

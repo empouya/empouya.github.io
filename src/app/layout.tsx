@@ -40,7 +40,7 @@ export default function RootLayout({
       <head>
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
       </head>
-      <body className="min-h-screen bg-background font-sans antialiased">
+      <body className="font-sans antialiased">
         <SiteShell>{children}</SiteShell>
       </body>
     </html>

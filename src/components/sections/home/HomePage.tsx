@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ProjectCard from "@/components/projects/ProjectCard";
 import { homeProfile as profile } from "@/content/home/profile";
 import { siteRoutes } from "@/lib/routes";
 import { ArrowRightIcon, GithubIcon, LinkedinIcon, DownloadIcon } from "@/components/ui/icons";
@@ -41,16 +42,7 @@ export default function HomePage() {
                     <Link href={siteRoutes.projects.href} className={styles.textLink}>Project library <ArrowRightIcon className="h-4 w-4" /></Link>
                 </div>
                 <div className={styles.projectGrid}>
-                    {profile.selectedWork.map(work => (
-                        <article key={work.id} className={styles.project}>
-                            <div className={styles.projectTop}><p>{work.kind}</p></div>
-                            <h3>{work.title}</h3>
-                            <p className={styles.body}>{work.summary}</p>
-                            <p className={styles.stack}>{work.stack.join(" · ")}</p>
-                            <div className={styles.evidence}><p>{work.evidence}</p><p>{work.context}</p></div>
-                            <Link href={work.action.href} className={styles.textLink} aria-label={`Read case study: ${work.title}`}>{work.action.label}<ArrowRightIcon className="h-4 w-4" /></Link>
-                        </article>
-                    ))}
+                    {profile.selectedWork.map(project => <ProjectCard key={project.id} project={project} headingLevel={3} />)}
                 </div>
             </section>
 

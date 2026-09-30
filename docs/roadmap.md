@@ -9,7 +9,7 @@ Tasks must be completed in order unless the user explicitly changes the priority
 ## Progress
 
 - [x] Task 1 — Lock the information architecture and content boundaries
-- [ ] Task 2 — Simplify the shared visual system
+- [x] Task 2 — Simplify the shared visual system
 - [ ] Task 3 — Simplify the site shell
 - [x] Task 4 — Rebuild the homepage around rapid credibility
 - [x] Task 5 — Redesign project cards and remove filtering
@@ -49,7 +49,7 @@ Implemented in [`information-architecture.md`](information-architecture.md) and 
 
 ---
 
-## [ ] Task 2 — Simplify the shared visual system
+## [x] Task 2 — Simplify the shared visual system
 
 ### Goal
 
@@ -76,6 +76,26 @@ Reduce the review's central problem—visual fragmentation—without replacing t
 ### Review references
 
 Review sections 1–4 and 12: cardification, pill overuse, preservation of the palette and typography, text contrast, and calmer result presentation.
+
+### Completion record
+
+Completed 2026-09-30 under the user's explicit request to simplify the shared system, remove unnecessary files/code, and preserve UI/UX. Existing open sections, prose, metadata, results, and project cards already satisfy the intended visual hierarchy after the page migrations. This cycle consolidates their implementation without changing current copy, layouts, palettes, type sizes, spacing, or routes.
+
+Removed the unused legacy global color system, layout/heading/animation wrappers, nine unused icons, obsolete site data and types, and the empty social-image placeholder (12 deleted files). Removed `framer-motion` and `tw-animate-css` plus their now-unused motion dependencies. Home and Projects now share `ProjectCard` directly, preserving their H3/H2 hierarchy and existing visual variants; the redundant Home project-data adapter is gone. Reduced-motion handling has one global owner, while skip-link and focus styles use the active palette. Decorative icons are explicitly hidden from assistive technology. TypeScript now reports unused locals/imports and parameters. The README and new `visual-system.md` document the actual owners and reuse rules.
+
+Lint, TypeScript, all eight existing regression tests, and Webpack static export passed. Standard `npm run build` was attempted; the environment blocked Turbopack's CSS-worker port. No orphaned non-route TS/TSX modules or unused CSS Module classes were found in the final consumer audit. All 13 exported HTML files passed internal-link/asset, main/H1, canonical, sitemap, CV PDF, and removed-placeholder checks.
+
+Before/after browser checks covered 176 combinations: 11 routes × four widths (320/390/768/1440) × two palettes × light/dark. Content, typography, page heights, and rendered positions match. Consolidating Home cards removes a type-label wrapper, changing only its invisible box width. All 24 full-page screenshot comparisons passed: 14 are pixel-identical; the other 10 differ by one RGB level in only 5–7 pixels on an Appearance border edge. Keyboard Enter/Escape, skip-link focus, client navigation, saved choices, system mode, reduced motion, and no-JavaScript content passed without runtime errors. Normal-text palette contrast across background/surface/subtle combinations is at least 5.38:1, so no color changes were needed. Deployed Home was captured at mobile/desktop sizes for comparison; its older visual differences are from previous redesign tasks.
+
+The first after-build browser attempt used cached asset references from the previous export. The audit passed with cache disabled and fresh assets. This was a preview-cache issue, not a source change. Task 3, Task 9, and Task 10 remain unchecked; current professional claims were not rewritten. The separate user CV modification remains outside this commit.
+
+### User acceptance checks
+
+- Run `npm run lint`, `npx tsc --noEmit`, `node --test tests/*.test.mjs`, and `npm run build` sequentially; use `npm run build -- --webpack` only for the documented worker-port restriction. Serve `out/` with `python3 -m http.server 8766 --directory out` and refresh without cache after rebuilding.
+- Inspect `/`, `/about/`, `/projects/`, all six case-study links, `/contact/`, and `/404.html` at 1440×900, 768×1024, 390×844, and 320×844. Do these retain the previous local redesign's spacing, typography, content, card hierarchy, and lack of horizontal overflow? Visual parity is expected; any unplanned visual change is a regression.
+- Switch both palettes through Light, Dark, and Match device; navigate between pages and refresh. Does appearance remain consistent? Use Enter/Escape on Appearance and the skip link to reach main content. The main-content focus outline should now follow the active palette.
+- Check Home's two featured cards and the six library cards: are summaries unchanged, correctly headed, and linked to the same case studies? Are CV, contact, and source actions still usable?
+- Compare with deployment: retain the earlier simplification of cards, pills, thumbnails, and repeated CTA sections. This task should introduce no additional visual redesign. Do the shared-pattern instructions make the next styling change's owner clear?
 
 ---
 

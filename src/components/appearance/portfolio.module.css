@@ -70,10 +70,19 @@
     }
 }
 .portfolio > main { flex: 1; }
-.portfolio :global(.skip-link) { background: var(--portfolio-ink); color: var(--portfolio-bg); }
+/* Keyboard navigation uses the same tokens as the surrounding page. */
+.portfolio :global(.skip-link) {
+    position: absolute; top: -100%; left: 1rem; z-index: 9999;
+    padding: 0.5rem 1rem; background: var(--portfolio-ink); color: var(--portfolio-bg);
+    font-size: 0.875rem; font-weight: 600; border-radius: 0 0 12px 12px;
+    transition: top 0.2s ease; text-decoration: none;
+}
+.portfolio :global(.skip-link):focus { top: 0; }
+.portfolio :focus-visible { outline: 2px solid var(--portfolio-accent); outline-offset: 2px; border-radius: var(--portfolio-radius); }
 .portfolio :is(h1, h2, h3) { font-family: var(--portfolio-heading); text-wrap: balance; }
 .portfolio :is(a, button, summary, select):focus-visible { outline: 2px solid var(--portfolio-accent); outline-offset: 5px; border-radius: 3px; }
 .portfolio ::selection { background: var(--portfolio-accent); color: var(--portfolio-bg); }
+/* Shared width, type, sections, actions, and cards preserve one visual vocabulary. */
 .container, .navInner { width: 100%; max-width: 1152px; margin-inline: auto; padding-inline: 32px; }
 .pageIntro { padding-block: 64px 44px; }
 .pageTitle { margin-top: 20px; max-width: 940px; font-size: clamp(40px, 5.5vw, 64px); line-height: 1.12; font-weight: 600; letter-spacing: -0.055em; }
@@ -197,7 +206,4 @@
     .contact { align-items: flex-start; flex-direction: column; gap: 20px; }
     .footerInner { grid-template-columns: 1fr; gap: 12px; padding-block: 26px; }
     .footerLinks { gap: 24px; }
-}
-@media (prefers-reduced-motion: reduce) {
-    .portfolio * { transition: none; animation: none; }
 }
