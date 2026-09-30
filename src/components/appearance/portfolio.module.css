@@ -1,4 +1,4 @@
-/* The theme is deliberately scoped: legacy pages keep their own tokens and mode. */
+/* One scoped appearance boundary for every public route. */
 .portfolio {
     --portfolio-bg: #f8fafc;
     --portfolio-ink: #172033;
@@ -10,6 +10,9 @@
     --portfolio-heading: var(--font-inter), sans-serif;
     --portfolio-radius: 12px;
     min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
     background: var(--portfolio-bg);
     color: var(--portfolio-ink);
     color-scheme: light;
@@ -66,6 +69,8 @@
         --portfolio-border: #3b5750;
     }
 }
+.portfolio > main { flex: 1; }
+.portfolio :global(.skip-link) { background: var(--portfolio-ink); color: var(--portfolio-bg); }
 .portfolio :is(h1, h2, h3) { font-family: var(--portfolio-heading); text-wrap: balance; }
 .portfolio :is(a, button, summary, select):focus-visible { outline: 2px solid var(--portfolio-accent); outline-offset: 5px; border-radius: 3px; }
 .portfolio ::selection { background: var(--portfolio-accent); color: var(--portfolio-bg); }

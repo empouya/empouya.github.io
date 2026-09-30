@@ -15,7 +15,7 @@ Tasks must be completed in order unless the user explicitly changes the priority
 - [x] Task 5 — Redesign project cards and remove filtering
 - [x] Task 6 — Convert project details into engineering case studies
 - [x] Task 7 — Simplify the About page
-- [ ] Task 8 — Reduce Contact to a one-viewport utility page
+- [x] Task 8 — Reduce Contact to a one-viewport utility page
 - [ ] Task 9 — Rewrite and normalize the content
 - [ ] Task 10 — Complete responsive, accessibility, and usability QA
 
@@ -265,7 +265,7 @@ This completes Task 7 only; the Home/About shell refinements do not complete sit
 
 ---
 
-## [ ] Task 8 — Reduce Contact to a one-viewport utility page
+## [x] Task 8 — Reduce Contact to a one-viewport utility page
 
 ### Goal
 
@@ -290,6 +290,25 @@ Remove repeated invitations and make contact information immediately actionable.
 ### Review references
 
 Review section 16: the Contact page is already the CTA and should become a short utility page.
+
+### Completion record
+
+Completed 2026-09-30 as the final cycle of the explicitly combined Projects/case-study/Contact request. Contact now has one invitation and primary email action, secondary LinkedIn/GitHub links, and unboxed location, work authorization, and availability from the shared professional profile. The full page fits at 1440×900; mobile stacks naturally.
+
+Finishing the migration also removes the obsolete conditional shell, document-level theme bootstrap, legacy navigation/footer/theme controls, mobile menu, and opacity page transition. Every route, including the static 404, uses the existing Studio Blue/Graphite Teal provider. Saved Home preferences remain compatible. The shared header exposes CV at mobile and desktop widths; root metadata now uses backend positioning and no empty social image. These necessary shared changes extend Task 8's original page-only scope; Tasks 2, 3, 9, and 10 remain separate audits.
+
+Lint, standalone TypeScript, all eight theme/content regression tests, and the supported Webpack production export passed. The normal Turbopack build remains blocked by the environment's CSS-worker port restriction. Export checks passed for all 13 generated HTML files: unique main/H1, internal destinations, canonical URLs, sitemap, valid local CV PDF, and removal of the theme gallery. The user-modified CV is preserved outside these commits.
+
+Browser verification covered Contact in both palettes and light/dark modes at 320/390/768/1440px, desktop viewport fit, site-wide navigation and saved preferences, keyboard Enter/Escape and focus return, skip link, device color changes, pre-hydration application, no-JavaScript content, blocked storage, and the static 404. No runtime or hydration errors were observed. Desktop/mobile captures were compared with deployed Contact. The initial keyboard audit failure was corrected in the test's simulated Enter event; the native control needed no change.
+
+### User acceptance checks
+
+- Run `npm run lint`, `npx tsc --noEmit`, `node --test tests/*.test.mjs`, and `npm run build` (or the documented Webpack fallback). Serve `out/` with `python3 -m http.server 8766 --directory out`.
+- Inspect `/contact/` at 1440×900, 768×1024, 390×844, and 320×844. Is the email action immediately clear, and does the desktop page fit without scrolling? Are location and availability accurate?
+- Compare with deployed Contact: the four cards and repeated CTA should be gone. Email/LinkedIn/GitHub destinations and shared identity must remain correct.
+- Choose Graphite Teal and Dark; navigate Contact → Home → About → Projects → any case study, then refresh. Does appearance persist? Repeat with Studio Blue and Match device.
+- Tab to Appearance and press Enter; operate its selects, then press Escape. Does focus return to Appearance? Does the skip link reach the main content, and can you reach CV and all contact links by keyboard?
+- Load `/404.html` and verify themed recovery links. Home's four regions, About's editorial structure, and every original case-study URL must remain intact.
 
 ---
 

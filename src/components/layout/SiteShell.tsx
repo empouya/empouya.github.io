@@ -1,31 +1,16 @@
-"use client";
-
-import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-import PageTransition from "@/components/animations/PageTransition";
-import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import AppearanceProvider from "@/components/appearance/AppearanceProvider";
 import PortfolioNavigation from "./PortfolioNavigation";
 import PortfolioFooter from "./PortfolioFooter";
 
-// Migrated routes share one mounted provider; Contact keeps its shell until Task 8.
+// All routes share one appearance boundary, including static error pages.
 export default function SiteShell({ children }: { children: ReactNode }) {
-    const pathname = usePathname();
-    const route = pathname.replace(/\/$/, "") || "/";
-    if (route === "/" || route === "/about" || route === "/projects" || route.startsWith("/projects/")) return (
+    return (
         <AppearanceProvider>
+            <a href="#main-content" className="skip-link">Skip to main content</a>
             <PortfolioNavigation />
             {children}
             <PortfolioFooter />
         </AppearanceProvider>
-    );
-    return (
-        <ThemeProvider>
-            <Navbar />
-            <PageTransition><div id="main-content">{children}</div></PageTransition>
-            <Footer />
-        </ThemeProvider>
     );
 }

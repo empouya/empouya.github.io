@@ -6,17 +6,17 @@ The redesign keeps the existing visual identity while making the portfolio faste
 
 This document is the content contract for the remaining redesign tasks. Layout and copy can evolve, but new sections should not be added without first deciding which page owns them and what decision they help a visitor make.
 
-## Home, About, and Projects migration (September 2026)
+## Completed page migration (September 2026)
 
 The four-region Home contract remains appropriate; its implementation now makes the distinctions between commercial work, independent projects, and professional experience explicit. Selected Work shows the logistics platform and TaskHive. Experience summarizes roles and responsibilities without repeating their technical project descriptions. Both featured summaries now link to their case studies; confidential work offers an email discussion within its case study.
 
-- `src/content/profile.ts` owns the corrected shared identity. `src/content/home/profile.ts` owns Home evidence and summaries; `src/content/about/profile.ts` owns the professional journey, principles, capabilities, education, and languages. These public datasets are checked against the supplied master professional profile. `src/content/site/` and the existing project JSON remain the legacy content for unmigrated pages. This is a temporary migration boundary, not two permanent sources of truth; migrate consumers and retire obsolete data as later tasks complete.
-- `SiteShell` selects a shared appearance provider, navigation, and footer for Home, About, the Projects library, and all case studies. Each page owns its semantic main. The provider stays mounted between these routes; both pages remain visible without animation or hydration. Contact retains the legacy shell until Task 8.
-- Studio Blue and Graphite Teal apply to Home, About, the Projects library, and all case studies. Color mode is independent of palette and respects the device by default. Legacy routes retain their existing appearance and saved mode.
+- `src/content/profile.ts` owns the corrected shared identity. `src/content/home/profile.ts` owns Home evidence and summaries; `src/content/about/profile.ts` owns the professional journey, principles, capabilities, education, and languages. These public datasets are checked against the supplied master professional profile. `src/content/projects/data/` owns the six case studies and the featured summaries used by Home. Contact reads shared identity directly. Unused `src/content/site/` data remains for the later content/cleanup audit; public pages no longer consume it.
+- `SiteShell` provides one appearance provider, navigation, skip link, and footer for every route, including Contact and the static 404. Each page owns its semantic main. The provider stays mounted during navigation; content remains visible without JavaScript. The obsolete shell, theme controls, mobile menu, and opacity-based page transition are retired.
+- Studio Blue and Graphite Teal apply to every route. Color mode is independent of palette and respects the device by default. Saved choices retain their original storage key; there is no second theme manager.
 - The theme comparison route `/themes/` and its preview components are removed once the two themes are implemented. It is not a permanent public page.
 - The old Home-only hero, About/skills/experience/personality previews, featured-project wrapper, and closing CTA are retired. Their replacements live in `HomePage.tsx`; shared components still used by other routes remain unchanged.
 
-About uses an open editorial layout: introduction/journey, three explained working principles, four capability groups, and unboxed background metadata. Core client experience is distinct from independent exploration and supporting skills. Home keeps its four regions, with a prominent role and no decorative numbering. A full-name wordmark and compact identity/social footer serve both migrated routes (review sections 4, 13–18).
+About uses an open editorial layout: introduction/journey, three explained working principles, four capability groups, and unboxed background metadata. Core client experience is distinct from independent exploration and supporting skills. Home keeps its four regions, with a prominent role and no decorative numbering. A full-name wordmark and compact identity/social footer serve every route (review sections 4, 13–18).
 
 The migration matrix below records the original sources and intended destinations. Removed source paths are historical references. Design and implementation details for the theme boundary are recorded in [home-theme-decision.md](home-theme-decision.md).
 
@@ -98,3 +98,7 @@ Case studies establish delivery evidence; About establishes judgment and working
 ## Project library migration
 
 The library uses server-rendered text-first cards and no filters. Existing project slugs are preserved. Cards prioritize type, concise description, up to four technologies, one proof point, status, and a case-study link. Source checks distinguish TypeScript/NestJS RideFlow services from the older Python description and Java TCP sockets in Tweeter from the older WebSocket claim. The library now includes logistics and Aetheris alongside the four preserved project URLs. `src/content/projects/data/` owns all project claims, including the two featured summaries consumed by Home. See `project-evidence.md` for provenance and claim limits.
+
+## Contact migration
+
+Contact is a short utility page: one invitation, prominent email action, LinkedIn/GitHub links, and unboxed location/work-authorization and availability details. Its desktop composition, including navigation and footer, fits at 1440×900. Mobile stacks naturally. The shared CV link remains available on every route. This follows review sections 16–18 without adding a form or server dependency.

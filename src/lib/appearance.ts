@@ -25,7 +25,7 @@ export function parseAppearance(raw: string | null): AppearancePreference {
 }
 
 // Set allowlisted preferences on the shared appearance wrapper before its content is painted.
-// CSS resolves system mode without waiting for React. The legacy theme is untouched.
+// CSS resolves system mode without waiting for React. All routes use this boundary.
 export const appearanceBootstrap = `
 (() => {
     const root = document.getElementById('portfolio-appearance');

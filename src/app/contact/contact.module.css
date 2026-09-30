@@ -1,0 +1,14 @@
+.contact { display: grid; align-content: center; padding-block: 60px 72px; }
+.email { display: inline-flex; align-items: center; gap: 20px; max-width: 100%; margin-top: 34px; padding-block: 12px; border-bottom: 2px solid var(--portfolio-accent); color: var(--portfolio-accent); font-size: clamp(21px, 3vw, 36px); font-weight: 550; letter-spacing: -0.04em; overflow-wrap: anywhere; }
+.email svg { flex-shrink: 0; }
+.email:hover { color: var(--portfolio-ink); border-color: var(--portfolio-ink); }
+.socials { display: flex; gap: 28px; margin-top: 16px; }
+.details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; max-width: 800px; margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--portfolio-border); }
+.details dt { font-size: 14px; font-weight: 600; }
+.details dd { margin-top: 8px; max-width: 350px; color: var(--portfolio-muted); font-size: 14px; line-height: 1.8; }
+@media (max-width: 640px) {
+    .contact { padding-block: 36px 44px; }
+    .email { gap: 10px; margin-top: 22px; }
+    .email svg { width: 18px; height: 18px; }
+    .details { grid-template-columns: 1fr; gap: 22px; margin-top: 26px; }
+}
