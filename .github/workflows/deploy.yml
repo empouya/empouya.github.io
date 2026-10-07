@@ -36,6 +36,8 @@ jobs:
         run: npm ci
 
       - name: Build project
+        env:
+          NEXT_PUBLIC_ANALYTICS_URL: ${{ vars.NEXT_PUBLIC_ANALYTICS_URL }}
         run: npm run build
 
       - name: Upload static export

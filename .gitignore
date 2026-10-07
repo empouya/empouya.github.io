@@ -43,3 +43,9 @@ next-env.d.ts
 # Repomix
 repomix.config.json
 portfolio-codebase-summary.md
+
+# Cloudflare local state and secrets
+.wrangler/
+.dev.vars*
+workers/analytics/wrangler.local.json
+__pycache__/

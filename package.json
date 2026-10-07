@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:theme": "node --test tests/home-theme.test.mjs"
+    "test:theme": "node --test tests/home-theme.test.mjs",
+    "test:analytics": "node --test tests/analytics.test.mjs",
+    "analytics:connect": "python3 scripts/connect-analytics-bot.py"
   },
   "dependencies": {
     "next": "16.3.1",
@@ -23,6 +25,7 @@
     "eslint-config-next": "16.3.1",
     "postcss": "^8.5",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.148.0"
   }
 }

@@ -1,0 +1,19 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "portfolio-analytics",
+  "main": "index.ts",
+  "compatibility_date": "2026-10-07",
+  "workers_dev": true,
+  "observability": { "enabled": false },
+  "vars": {
+    "SITE_ORIGIN": "https://empouya.github.io",
+    "BOT_USERNAME": "prof_analytics_003_bot",
+    "TRACKED_PATHS": "/,/about/,/projects/,/contact/,/projects/international-logistics-platform/,/projects/taskhive-backend/,/projects/aetheris/,/projects/rideflow-distributed-system/,/projects/xv6-riscv-kernel/,/projects/tweeter-realtime-app/"
+  },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "portfolio-analytics",
+    "database_id": "00000000-0000-0000-0000-000000000000",
+    "migrations_dir": "migrations"
+  }]
+}

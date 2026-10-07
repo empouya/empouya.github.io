@@ -18,6 +18,7 @@ Tasks must be completed in order unless the user explicitly changes the priority
 - [x] Task 8 — Reduce Contact to a one-viewport utility page
 - [ ] Task 9 — Rewrite and normalize the content
 - [ ] Task 10 — Complete responsive, accessibility, and usability QA
+- [x] Task 11 — Add free page-view analytics with private Telegram reports
 
 ---
 
@@ -388,3 +389,41 @@ Verify that the complete redesign works as a coherent production portfolio for i
 ### Review references
 
 The complete review, especially the overall verdict, priority order, recruiter/client UX analysis, and final requirement for a quieter and more selective site.
+
+---
+
+## [x] Task 11 — Add free page-view analytics with private Telegram reports
+
+### Goal and review connection
+
+User-requested extension: count portfolio page views on GitHub Pages and query them privately through `@prof_analytics_003_bot`, using only Cloudflare Workers Free and D1 Free. The review's overall verdict and sections 1–3 call for less visual distraction and preservation of the existing design. Analytics therefore adds no visible component, dashboard, banner, or change to page ownership.
+
+### Scope and acceptance criteria
+
+- Collect canonical, allowlisted page views without cookies, visitor IDs, query strings, or stored IPs; respect Do Not Track.
+- Count client navigation once, preserve history with atomic daily aggregates, and isolate all analytics failures from the website.
+- Restrict Telegram reports to the paired owner's private chat and authenticate webhook requests.
+- Provide `/stats` (today/7 days/30 days/all time) and `/pages` (last 30 days), with explicit UTC/page-view definitions.
+- Keep bot credentials out of the repository and browser; document setup, provider quotas, metric limitations, updates, and rollback.
+- Pass lint, TypeScript, counter/security regression tests, Worker packaging, static export, and live post-activation checks in `docs/analytics.md`.
+- Preserve visual parity, both themes, navigation, metadata, sitemap, and GitHub Pages hosting.
+
+### Completion record
+
+Implemented and validated 2026-10-07 under the user's explicit analytics and deployment request. The shared shell records canonical allowlisted routes through a null-rendering client component; there are no layout, copy, palette, navigation, or metadata changes. Cloudflare Workers Free/D1 Free host atomic daily totals, with authenticated owner-only Telegram reports and no bot token in the website or running Worker. Collection is enabled at build time by the public GitHub Actions variable and remains disabled when that variable is absent. The deployment guide covers quotas, approximate counts, maintenance, and rollback.
+
+The owner completed pairing and confirmed that `/stats` and `/pages` work, then configured the repository variable with `https://portfolio-analytics.empouya03.workers.dev`. Read-only Cloudflare checks confirmed both required secret bindings and a working D1 database. Live endpoint checks returned 204 for health and a valid view, 403 for an unauthenticated webhook and an untrusted origin, and 400 for an unknown page. Reading D1 confirmed that the accepted view was persisted. Verification requests count as views and are retained; they are not presented as organic visits.
+
+Validation passed: ESLint, standalone TypeScript, 17 JavaScript regressions, five Python setup regressions, Python syntax checking, Worker packaging, local workerd/D1 integration, and production static export with the real endpoint. Chrome checks confirmed initial/client/return route counting and no extra events for appearance/query/hash changes, 404s, or Do Not Track; requests contain no cookies/referrer. Contact retained its 1440×900 and 390×844 layout with no browser exceptions. Earlier shared visual-parity checks remain applicable because no presentation styles or content changed.
+
+The documented Webpack fallback was used locally because the normal Turbopack build stalled under the managed process sandbox. GitHub Actions retains the normal `npm run build` path. The local setup client explicitly identifies itself to avoid Cloudflare's HTTP 403/error 1010 for Python's generic User-Agent and reports actionable health-check failures. Secret values and the account-specific Wrangler configuration remain outside Git.
+
+### User acceptance checks
+
+- Run `npm run lint`, `npx tsc --noEmit`, `node --test tests/*.test.mjs`, `python3 -m unittest discover -s tests -p 'test_*.py'`, and `npm run build` (or the documented local Webpack fallback).
+- Open `https://empouya.github.io/`, `/about/`, `/projects/`, `/projects/taskhive-backend/`, `/contact/`, and `/404.html` at 1440×900 and 390×844. Does the site retain exactly the same layout, content, links, keyboard access, and both appearance palettes? Any visual difference is a regression.
+- Note `/stats`, visit Home then About, and request `/stats` and `/pages` again. Do both paths gain views? Other visitors and verification visits can also increase totals.
+- Do theme changes, query/hash changes, and 404s avoid extra events? With Do Not Track enabled, is collection absent? With the Worker blocked in DevTools, does the portfolio remain usable?
+- Can the paired owner read reports while other accounts/groups receive none? Dates use UTC; counts are page views, not unique visitors.
+
+Task 3 remains the next unchecked redesign task and is not included in this change.
